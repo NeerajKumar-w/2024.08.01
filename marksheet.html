@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="./index.css" rel="stylesheet">
+    <style>
+        body {
+            overflow: auto;
+        }
+
+        .content {
+            background: lightgrey;
+            height: 100%;
+            width: 100%;
+        }
+
+        .marksheet {
+            margin: 5px 5px 5px 5px;
+            height: 1030px;
+            width: 800px;
+            border: 1px solid gold;
+            padding: 5px 5px 5px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+        }
+
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .segregate {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .tables {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .tablestyle {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            text-justify: space-evenly;
+            padding: 2px 2px 2px 2px;
+        }
+
+        .redtext {
+            color: maroon;
+        }
+
+        .subname {
+            border-right: 1px solid black;
+        }
+
+        .maxmark {
+            border-bottom: none;
+            border-right: 1px solid black;
+        }
+        .toptext{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        img{
+            height: 150px;
+            width: 150px;
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="content">
+        <div class="marksheet">
+            <div class="header">
+                <div style="height: 150px; width: 150px; display: inline-flex; gap:5px;">Sr No <p class="redtext"><b>000000</b></p>
+                </div>
+                <div>
+                    <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbZExuiggMkTBKM-sXK44dK5-bZLn4FHbCXg&s" alt="">
+                </div>
+                <div>
+                    <img class="qrcode" src="data:image/png;base64,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" alt="">
+                </div>
+            </div>
+            <div class="toptext">
+                <div style="font-family: 'Times New Roman', Times, serif;">
+                    HINDUSTHAN COLLEGE OF ENGINEERING AND TECHNOLOGY
+                </div>
+                <div style="font-family: 'Times New Roman', Times, serif;">
+                    Affiliated with AICTE, Anna University Chennai - 642069
+                </div>
+                <div style="font-family: 'Times New Roman', Times, serif;">
+                    An autonomous institution recognised by AICTE
+                </div>
+            </div>
+            <div class="segregate">
+                <div style="font-size: 20pt; font-family: 'Times New Roman', Times, serif; color: maroon;">
+                    Annual Statement Of Marks
+                </div>
+                <div class="tables" style="margin-bottom: 5px;">
+                    <table class="tablestyle">
+                        <tr class="tablestyle">
+                            <td colspan="2" class="tablestyle">
+                                <p class="redtext">Name of the Candidate </p><br><b>Neeraj Kumar D L</b>
+                            </td>
+                            <td colspan="2" class="tablestyle">
+                                <p class="redtext">Course Name With Code</p><br><b>Bachelor's in ECE</b> <br>
+                                <b>DF4358</b>
+                            </td>
+                        </tr>
+                        <tr class="tablestyle">
+                            <td class="tablestyle">
+                                <p>Reg No</p><br><b>720721106075</b>
+                            </td>
+                            <td class="tablestyle">
+                                <p class="redtext">Enrollment Number</p><br><b>55446677</b>
+                            </td>
+                            <td class="tablestyle">
+                                <p class="redtext">Authorised Training center name with code</p><br><b>(Authorised
+                                    Training center name)<br>(Authorised Training center code)</b>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="tablestyle" style="margin-top: 5px; height: 500px;">
+                        <tr class="tablestyle">
+                            <td class="tablestyle" style="border-right: none;" rowspan="2">
+                                <p class="redtext">Subject<br>Code</p>
+                            </td>
+                            <td class="tablestyle" style="border-left: none;" rowspan="2">
+                                <p class="redtext"> Subject Name</p>
+                            </td>
+                            <td rowspan="2" class="tablestyle">
+                                <p class="redtext">Max.<br>Marks</p>
+                            </td>
+                            <td colspan="3" class="tablestyle">
+                                <p class="redtext">Marks Obtained<br>In Figures</p>
+                            </td>
+                            <td class="tablestyle" style="border-bottom: none;">
+                                <p class="redtext">Total In<br>Words</p>
+                            </td>
+                        </tr>
+                        <tr class="tablestyle">
+                            <td class="tablestyle redtext">Theory</td>
+                            <td class="tablestyle redtext">Practical</td>
+                            <td class="tablestyle redtext">Total</td>
+                            <td class="tablestyle" style="border-top: none;"></td>
+                        </tr>
+                        <tr>
+                            <td class="subject1"></td>
+                            <td class="subname"></td>
+                            <td class="maxmark">100</td>
+                            <td class="tmarks" style="border: none;"></td>
+                            <td class="pmarks" style="border: none;"></td>
+                            <td class="tomarks" style="border: none;"></td>
+                            <td class="words" style="border: none; border-left: 1px solid black;"></td>
+                        </tr>
+                        <tr>
+                            <td class="subject1"></td>
+                            <td class="subname"></td>
+                            <td class="maxmark">100</td>
+                            <td class="tmarks" style="border: none;"></td>
+                            <td class="pmarks" style="border: none;"></td>
+                            <td class="tomarks" style="border: none;"></td>
+                            <td class="words" style="border: none; border-left: 1px solid black;"></td>
+                        </tr>
+                        <tr>
+                            <td class="subject1"></td>
+                            <td class="subname"></td>
+                            <td class="maxmark">100</td>
+                            <td class="tmarks" style="border: none;"></td>
+                            <td class="pmarks" style="border: none;"></td>
+                            <td class="tomarks" style="border: none;"></td>
+                            <td class="words" style="border: none; border-left: 1px solid black;"></td>
+                        </tr>
+                        <tr>
+                            <td class="subject1"></td>
+                            <td class="subname"></td>
+                            <td class="maxmark">100</td>
+                            <td class="tmarks" style="border: none;"></td>
+                            <td class="pmarks" style="border: none;"></td>
+                            <td class="tomarks" style="border: none;"></td>
+                            <td class="words" style="border: none; border-left: 1px solid black;"></td>
+                        </tr>
+                        <tr>
+                            <td class="subject1"></td>
+                            <td class="subname"></td>
+                            <td class="maxmark">100</td>
+                            <td class="tmarks" style="border: none;"></td>
+                            <td class="pmarks" style="border: none;"></td>
+                            <td class="tomarks" style="border: none;"></td>
+                            <td class="words" style="border: none; border-left: 1px solid black;"></td>
+                        </tr>
+                        <tr>
+                            <td class="subject1"></td>
+                            <td class="subname"></td>
+                            <td class="maxmark">100</td>
+                            <td class="tmarks" style="border: none;"></td>
+                            <td class="pmarks" style="border: none;"></td>
+                            <td class="tomarks" style="border: none;"></td>
+                            <td class="words" style="border: none; border-left: 1px solid black;"></td>
+                        </tr>
+                        <tr>
+                            <td class="subject1"></td>
+                            <td class="subname"></td>
+                            <td class="maxmark">100</td>
+                            <td class="tmarks" style="border: none;"></td>
+                            <td class="pmarks" style="border: none;"></td>
+                            <td class="tomarks" style="border: none;"></td>
+                            <td class="words" style="border: none; border-left: 1px solid black;"></td>
+                        </tr>
+                        <tr>
+                            <td class="subject1"></td>
+                            <td class="subname"></td>
+                            <td class="maxmark">100</td>
+                            <td class="tmarks" style="border: none;"></td>
+                            <td class="pmarks" style="border: none;"></td>
+                            <td class="tomarks" style="border: none;"></td>
+                            <td class="words" style="border: none; border-left: 1px solid black;"></td>
+                        </tr>
+                        <tr class="tablestyle">
+                            <td class="tablestyle" rowspan="7"
+                                style="display: flex; flex-direction: row; border: none;">
+                                <div>
+                                    <p class="redtext"> Grand Total <br> in Words</p>
+                                </div>
+                                <div>
+                                    <p id="grandtotal"></p><br>
+                                    <p id="gwords"></p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="tablestyle">
+                            <td class="tablestyle" colspan="2">
+                                <p class="redtext">Month and Year of Examination</p>
+                            </td>
+                            <td class="tablestyle" colspan="2">
+                                <p class="redtext">No of Subject Offered</p>
+                            </td>
+                            <td class="tablestyle">
+                                <p class="redtext">Result</p>
+                            </td>
+                            <td class="tablestyle">
+                                <p class="redtext">Percentage</p>
+                            </td>
+                            <td class="tablestyle">
+                                <p class="redtext">Grade</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tablestyle" colspan="2"><b>May 2020</b></td>
+                            <td class="tablestyle" colspan="2"><b> T5+P3=8</b></td>
+                            <td class="tablestyle" id="result"></td>
+                            <td class="tablestyle" id="percentage"></td>
+                            <td class="tablestyle" id="grade"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="header" style="text-align: center; height: 100%;">
+                <div>
+                    <div class="redtext">Date: </div><div><b>(Date of Result)</b></div>
+                </div>
+                <div class="redtext">
+                    <p style="color: grey;">This Sample of Annual Statement of Marks is under subjective assesment by the board of examinations</p>
+                    Subject marked with * indicates Exception
+                </div>
+                <div>
+                    <div>
+                        <b>(Signature of Deputy<br>Controller of Examination)</b>
+                    </div>
+                    <div class="redtext">
+                        Deputy Controller of Examination
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function marktoword(mark, words) {
+            console.log(mark)
+            console.log(words)
+            let smark = String(mark)
+            let splitmark = smark.split("")
+            console.log(splitmark)
+            let wordmark = '';
+            for (let i = 0; i < splitmark.length; i++) {
+                wordmark = wordmark + words[Number(splitmark[i])] + ' ';
+            }
+            console.log(wordmark);
+            return wordmark;
+        }
+        function filldata() {
+            const subjects = document.getElementsByClassName("subject1")
+            const names = document.getElementsByClassName("subname")
+            const maxmarks = document.getElementsByClassName("maxmark")
+            const tmarks = document.getElementsByClassName("tmarks")
+            const pmarks = document.getElementsByClassName("pmarks")
+            const tomarks = document.getElementsByClassName("tomarks")
+            const wmarks = document.getElementsByClassName("words")
+            const words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+            let mark = 0
+            let total = 0
+            for (let i = 0; i < subjects.length; i++) {
+                subjects[i].innerHTML = 'FCK012-' + i;
+                names[i].innerHTML = 'Electronics - ' + i;
+                maxmarks[i].innerHTML = '100';
+                if (i < 5) {
+                    mark = Number(prompt('Enter Marks'));
+                    pmarks[i].innerHTML = 'XX';
+                    tmarks[i].innerHTML = String(mark);
+                    tomarks[i].innerHTML = String(mark);
+                    console.log(mark)
+                    wmarks[i].innerHTML = marktoword(mark, words);
+                }
+                else {
+                    mark = Number(prompt('Enter Marks'));
+                    pmarks[i].innerHTML = String(mark);
+                    tmarks[i].innerHTML = 'XX'
+                    tomarks[i].innerHTML = String(mark);
+                    wmarks[i].innerHTML = marktoword(mark, words);
+                }
+                total += mark;
+                console.log(total);
+            }
+            document.getElementById('grandtotal').innerHTML = String(total);
+            document.getElementById('gwords').innerHTML = marktoword(total, words);
+            if (total > 400) {
+                document.getElementById('result').innerHTML = '<b>' + 'PASS' + '</b>'
+            }
+            else {
+                document.getElementById('result').innerHTML = '<b>' + 'FAIL' + '</b>'
+            }
+            document.getElementById('percentage').innerHTML = '<b>' + total/8 + '<b>'
+            const grade = document.getElementById('grade');
+            if(total > 700){
+                grade.innerHTML = '<b>' + 'A' + '</b>'
+            }
+            else if(total > 600 && total <= 700){
+                grade.innerHTML = '<b>' + 'B' + '</b>'
+            }
+            else if(total > 400 && total <= 600){
+                grade.innerHTML = '<b>' + 'C' + '</b>'
+            }
+            else{
+                 grade.innerHTML = '<b>' + 'D' + '</b>'
+            }
+        }
+        filldata();
+    </script>
+</body>
+
+</html>

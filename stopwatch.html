@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: whitesmoke;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        #stopwatch {
+            color: black;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .box {
+            background-color: white;
+            padding: 10px 10px 10px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px grey;
+        }
+        #laps{
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <div id="stopwatch">00:00:00</div>
+        <div>
+            <button onclick="startTimer()">Start</button>
+            <button onclick="recordLap()">Lap</button>
+            <button onclick="stopTimer()">Stop</button>
+            <button onclick="resetTimer()">Reset</button>
+        </div>
+        <div id="laps"></div>
+    </div>
+
+    <script>
+        let startTime, updatedTime, difference, tInterval;
+        let running = false;
+        let laps = [];
+
+        function startTimer() {
+            if (!running) {
+                startTime = new Date().getTime();
+                tInterval = setInterval(getShowTime, 1000);
+                running = true;
+            }
+        }
+
+        function getShowTime() {
+            updatedTime = new Date().getTime();
+            difference = updatedTime - startTime;
+
+            let hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            hours = (hours < 10) ? "0" + hours : hours;
+            minutes = (minutes < 10) ? "0" + minutes : minutes;
+            seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+            document.getElementById('stopwatch').innerHTML = hours + ":" + minutes + ":" + seconds;
+        }
+
+        function stopTimer() {
+            clearInterval(tInterval);
+            running = false;
+        }
+
+        function resetTimer() {
+            clearInterval(tInterval);
+            running = false;
+            document.getElementById('stopwatch').innerHTML = "00:00:00";
+            laps = [];
+            document.getElementById('laps').innerHTML = "";
+        }
+
+        function recordLap() {
+            if (running) {
+                let lapTime = document.getElementById('stopwatch').innerHTML;
+                laps.push(lapTime);
+                document.getElementById('laps').innerHTML += "Lap " + laps.length + ": " + lapTime + "<br>";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
